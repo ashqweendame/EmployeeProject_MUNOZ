@@ -71,14 +71,14 @@ public class Main {
         HourlyEmployee hourly1 = new HourlyEmployee();
         hourly1.setEmpID(101);
 
-        hourly1.setEmpName(new Name("Ashley", 'M', "Munoz"));
+        hourly1.setEmpName(new Name("Ashley", "Saniel", "Munoz"));
         hourly1.setTotalHoursWorked(45.0F);
         hourly1.setRatePerHour(200.0);
 
         hourly1.setEmpBirthDate(new MyDate(5, 9, 1998));
 
 
-        Name name2 = new Name("Charlie", 'B', "Brown");
+        Name name2 = new Name("Charlie", "Dink", "Brown");
 
         MyDate birth2 = new MyDate(23, 10, 2000);
         HourlyEmployee hourly2 = new HourlyEmployee(102, name2, 38.0F, 250.0, birth2);
