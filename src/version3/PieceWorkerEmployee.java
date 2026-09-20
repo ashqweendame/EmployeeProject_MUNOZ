@@ -55,13 +55,9 @@ public class PieceWorkerEmployee extends Employee {
     }
 
     private double calculatePiecePay() {
-        double basicPay = totalPiecesFinished * ratePerPiece;
-
         int bonusBlocks = totalPiecesFinished / 100;
-        double productionBonus =
-                bonusBlocks * 10 * ratePerPiece;
 
-        return basicPay + productionBonus;
+        return (totalPiecesFinished + bonusBlocks * 10) * ratePerPiece;
     }
 
     @Override
@@ -70,20 +66,13 @@ public class PieceWorkerEmployee extends Employee {
                 + super.computeSalary(currentMonth);
     }
 
-    @Override
-    public double computeSalary() {
-        return calculatePiecePay()
-                + super.computeSalary();
-    }
-
     public void displayPieceWorkerEmployee() {
         displayEmployee();
 
         System.out.printf(
                 "Pieces Finished: %d | Rate/Piece: ₱%.2f%n",
                 totalPiecesFinished,
-                ratePerPiece
-        );
+                ratePerPiece);
     }
 
     @Override
@@ -103,30 +92,31 @@ public class PieceWorkerEmployee extends Employee {
 
     @Override
     public boolean equals(Object obj) {
-        if (!super.equals(obj)) {
-            return false;
-        }
-
         if (!(obj instanceof PieceWorkerEmployee)) {
             return false;
         }
 
         PieceWorkerEmployee other = (PieceWorkerEmployee) obj;
 
-        return totalPiecesFinished == other.totalPiecesFinished
+        return super.equals(obj)
+                && totalPiecesFinished == other.totalPiecesFinished
                 && Double.compare(ratePerPiece, other.ratePerPiece) == 0;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                super.hashCode(),
-                totalPiecesFinished,
-                ratePerPiece
+            super.hashCode(),
+            totalPiecesFinished,
+            ratePerPiece
         );
     }
 
     @Override
+    public PieceWorkerEmployee clone() {
+        return (PieceWorkerEmployee) super.clone();
+    }
+}
     public PieceWorkerEmployee clone() {
         return (PieceWorkerEmployee) super.clone();
     }
