@@ -28,9 +28,7 @@ public class CommissionEmployee extends Employee {
 
     public void setTotalSale(double totalSale) {
         if (totalSale < 0) {
-            throw new IllegalArgumentException(
-                    "Total sales cannot be negative."
-            );
+            throw new IllegalArgumentException("Total sales cannot be negative.");
         }
 
         this.totalSale = totalSale;
@@ -51,15 +49,7 @@ public class CommissionEmployee extends Employee {
     @Override
     public double computeSalary(int currentMonth) {
         double commission = totalSale * getCommissionRate();
-
         return commission + super.computeSalary(currentMonth);
-    }
-
-    @Override
-    public double computeSalary() {
-        double commission = totalSale * getCommissionRate();
-
-        return commission + super.computeSalary();
     }
 
     public void displayCommissionEmployee() {
@@ -75,31 +65,28 @@ public class CommissionEmployee extends Employee {
     @Override
     public String toString() {
         return String.format(
-                "CommissionEmployee [ID: %d, Name: %s, DOB: %s, Hired: %s, "
-                        + "Sales: ₱%.2f, Rate: %.2f%%, Salary: ₱%.2f]",
-                getEmpID(),
-                getEmpName(),
-                getBirthDate(),
-                getDateHired(),
-                totalSale,
-                getCommissionRate() * 100,
-                computeSalary()
+            "CommissionEmployee [ID: %d, Name: %s, DOB: %s, Hired: %s, " +
+            "Sales: ₱%.2f, Rate: %.2f%%, Salary: ₱%.2f]",
+            getEmpID(),
+            getEmpName(),
+            getBirthDate(),
+            getDateHired(),
+            totalSale,
+            getCommissionRate() * 100,
+            computeSalary()
         );
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (!super.equals(obj)) {
-            return false;
-        }
-
         if (!(obj instanceof CommissionEmployee)) {
             return false;
         }
 
         CommissionEmployee other = (CommissionEmployee) obj;
 
-        return Double.compare(totalSale, other.totalSale) == 0;
+        return super.equals(obj)
+                && Double.compare(totalSale, other.totalSale) == 0;
     }
 
     @Override
