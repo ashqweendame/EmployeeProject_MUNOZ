@@ -56,9 +56,7 @@ public class Name implements Cloneable {
     }
 
     public String displayName() {
-        StringBuilder result = new StringBuilder();
-
-        result.append(lastName);
+        StringBuilder result = new StringBuilder(lastName);
 
         if (!firstName.isEmpty()) {
             result.append(", ").append(firstName);
