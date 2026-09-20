@@ -7,6 +7,12 @@ public class MyDate implements Cloneable {
     private int month;
     private int year;
 
+    private static final String[] MONTHS = {
+        "Jan", "Feb", "Mar", "Apr",
+        "May", "Jun", "Jul", "Aug",
+        "Sep", "Oct", "Nov", "Dec"
+    };
+
     public MyDate() {
         this(1, 1, 2000);
     }
@@ -50,12 +56,7 @@ public class MyDate implements Cloneable {
     }
 
     public String displayDate() {
-        String[] months = {
-                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        };
-
-        return String.format("%02d %s %04d", day, months[month - 1], year);
+        return String.format("%02d %s %04d", day, MONTHS[month - 1], year);
     }
 
     @Override
