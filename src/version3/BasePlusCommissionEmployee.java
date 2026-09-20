@@ -9,7 +9,6 @@ public class BasePlusCommissionEmployee
 
     public BasePlusCommissionEmployee() {
         super();
-        this.baseSalary = 0.0;
     }
 
     public BasePlusCommissionEmployee(
@@ -37,9 +36,7 @@ public class BasePlusCommissionEmployee
 
     public void setBaseSalary(double baseSalary) {
         if (baseSalary < 0) {
-            throw new IllegalArgumentException(
-                    "Base salary cannot be negative."
-            );
+            throw new IllegalArgumentException("Base salary cannot be negative.");
         }
 
         this.baseSalary = baseSalary;
@@ -50,45 +47,36 @@ public class BasePlusCommissionEmployee
         return baseSalary + super.computeSalary(currentMonth);
     }
 
-    @Override
-    public double computeSalary() {
-        return baseSalary + super.computeSalary();
-    }
-
     public void displayBasePlusCommissionEmployee() {
         displayEmployee();
 
         System.out.printf(
-                "Base Salary: ₱%.2f | Total Sales: ₱%.2f | "
-                        + "Commission Rate: %.2f%%%n",
-                baseSalary,
-                getTotalSale(),
-                getCommissionRate() * 100
+            "Base Salary: ₱%.2f | Total Sales: ₱%.2f | " +
+            "Commission Rate: %.2f%%%n",
+            baseSalary,
+            getTotalSale(),
+            getCommissionRate() * 100
         );
     }
 
     @Override
     public String toString() {
         return String.format(
-                "BasePlusCommissionEmployee [ID: %d, Name: %s, "
-                        + "DOB: %s, Hired: %s, Base: ₱%.2f, Sales: ₱%.2f, "
-                        + "Total Compensation: ₱%.2f]",
-                getEmpID(),
-                getEmpName(),
-                getBirthDate(),
-                getDateHired(),
-                baseSalary,
-                getTotalSale(),
-                computeSalary()
+            "BasePlusCommissionEmployee [ID: %d, Name: %s, " +
+            "DOB: %s, Hired: %s, Base: ₱%.2f, Sales: ₱%.2f, " +
+            "Total Compensation: ₱%.2f]",
+            getEmpID(),
+            getEmpName(),
+            getBirthDate(),
+            getDateHired(),
+            baseSalary,
+            getTotalSale(),
+            computeSalary()
         );
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (!super.equals(obj)) {
-            return false;
-        }
-
         if (!(obj instanceof BasePlusCommissionEmployee)) {
             return false;
         }
@@ -96,7 +84,8 @@ public class BasePlusCommissionEmployee
         BasePlusCommissionEmployee other =
                 (BasePlusCommissionEmployee) obj;
 
-        return Double.compare(baseSalary, other.baseSalary) == 0;
+        return super.equals(obj)
+                && Double.compare(baseSalary, other.baseSalary) == 0;
     }
 
     @Override
