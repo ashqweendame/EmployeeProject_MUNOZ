@@ -11,20 +11,10 @@ public class Employee implements Cloneable {
     protected static final double BIRTHDAY_BONUS = 5000.00;
 
     public Employee() {
-        this(
-                0,
-                new Name(),
-                new MyDate(),
-                new MyDate()
-        );
+        this(0, new Name(), new MyDate(), new MyDate());
     }
 
-    public Employee(
-            int empID,
-            Name empName,
-            MyDate birthDate,
-            MyDate dateHired) {
-
+    public Employee(int empID, Name empName, MyDate birthDate, MyDate dateHired) {
         this.empID = empID;
         this.empName = empName;
         this.birthDate = birthDate;
@@ -64,11 +54,7 @@ public class Employee implements Cloneable {
     }
 
     public double computeSalary(int currentMonth) {
-        if (currentMonth != -1 && birthDate.getMonth() == currentMonth) {
-            return BIRTHDAY_BONUS;
-        }
-
-        return 0.00;
+        return (currentMonth != -1 && birthDate.getMonth() == currentMonth) ? BIRTHDAY_BONUS : 0.00;
     }
 
     public double computeSalary() {
@@ -76,22 +62,17 @@ public class Employee implements Cloneable {
     }
 
     public void displayEmployee() {
-        System.out.println(
-                "ID: " + empID
-                        + ", Name: " + empName
-                        + ", DOB: " + birthDate
-                        + ", Hired: " + dateHired
+        System.out.printf(
+            "ID: %d, Name: %s, DOB: %s, Hired: %s%n",
+            empID, empName, birthDate, dateHired
         );
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Employee [ID: %d, Name: %s, DOB: %s, Hired: %s]",
-                empID,
-                empName,
-                birthDate,
-                dateHired
+            "Employee [ID: %d, Name: %s, DOB: %s, Hired: %s]",
+            empID, empName, birthDate, dateHired
         );
     }
 
@@ -106,7 +87,6 @@ public class Employee implements Cloneable {
         }
 
         Employee other = (Employee) obj;
-
         return empID == other.empID;
     }
 
@@ -119,11 +99,9 @@ public class Employee implements Cloneable {
     public Employee clone() {
         try {
             Employee copy = (Employee) super.clone();
-
             copy.empName = empName.clone();
             copy.birthDate = birthDate.clone();
             copy.dateHired = dateHired.clone();
-
             return copy;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
