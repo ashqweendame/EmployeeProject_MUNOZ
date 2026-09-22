@@ -68,12 +68,12 @@ public class HourlyEmployee {
 
     public void displayHourlyEmployee() {
         System.out.printf("ID: %d | Name: %s, %s %c. | Hours: %.2f | Rate: ₱%.2f/hr%n",
-                this.empID, this.empName.getLastname(), this.empName.getFirstname(), this.empName.getMiddleIn(), this.totalHoursWorked, this.ratePerHour);
+                this.empID, this.empName.getLastName(), this.empName.getFirstName(), this.empName.getMiddleName().charAt(0), this.totalHoursWorked, this.ratePerHour);
     }
 
     @Override
     public String toString() {
         return String.format("HourlyEmployee [ID: %d, Name: %s %s, Hours: %.2f, Rate: ₱%.2f, Total Salary: ₱%,.2f]",
-                this.empID, this.empName.getFirstname(), this.empName.getLastname(), this.totalHoursWorked, this.ratePerHour, this.computeSalary());
+                this.empID, this.empName.getFirstName(), this.empName.getLastName(), this.totalHoursWorked, this.ratePerHour, this.computeSalary());
     }
 }

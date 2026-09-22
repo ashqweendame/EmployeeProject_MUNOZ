@@ -117,7 +117,3 @@ public class PieceWorkerEmployee extends Employee {
         return (PieceWorkerEmployee) super.clone();
     }
 }
-    public PieceWorkerEmployee clone() {
-        return (PieceWorkerEmployee) super.clone();
-    }
-}
